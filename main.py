@@ -1,7 +1,8 @@
 from __future__ import annotations
-import virtualbox, json, pprint, configparser, time, psutil, sys
+import virtualbox, json, pprint, configparser, time, psutil, sys, subprocess
 from pypresence import Presence
 
+subprocess.Popen("C:\Program Files\Oracle\VirtualBox\VirtualBox.exe")
 
 class RichPresence:
     def __init__(self):
