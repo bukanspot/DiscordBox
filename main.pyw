@@ -1,8 +1,10 @@
 from __future__ import annotations
-import virtualbox, json, pprint, configparser, time, psutil, sys, time
+import virtualbox, json, pprint, configparser, time, psutil, sys, subprocess, os
 from pypresence import Presence
 
-time.sleep(5 * 60)
+p = subprocess.Popen("C:\Program Files\Oracle\VirtualBox\VirtualBox.exe")
+
+pid = p.pid
 
 class RichPresence:
     def __init__(self):
@@ -57,8 +59,8 @@ class RichPresence:
 
             # Stop updating the Rich Presence if VirtualBox is not running.
             else:
-                print("VirtualBox is not running")
-                self.RPC.clear()
+                p.wait()
+                os.kill(os.getpid(), 0)
 
             time.sleep(15)
 
