@@ -2,8 +2,13 @@ from __future__ import annotations
 import virtualbox, json, pprint, configparser, time, psutil, sys, subprocess, os
 from pypresence import Presence
 
-p = subprocess.Popen("C:\Program Files\Oracle\VirtualBox\VirtualBox.exe")
+# Initialize the config parser.
+config = configparser.ConfigParser()
+config.read("config.ini")
 
+# Initialize virtualbox dictionary.
+directory = config["Rich Presence"]["virtualbox_directory"]
+p = subprocess.Popen(directory)
 pid = p.pid
 
 class RichPresence:
