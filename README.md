@@ -7,11 +7,14 @@
 This project is effectively unmaintanable for me as my new computer has no support for the API used in this project. I may still be able to help with simple issues such as config problems, but any technical reasons it may not be working are hard for me to debug.
 
 ## Installation
+Download [last release](https://github.com/bukanspot/virtualbox-rich-presence/releases/), instruction for installation include in zip file.
 
+
+## Develovment
 First, clone the repository.
 
 ```cmd
-git clone https://www.github.com/vidhanio/virtualbox-rich-presence
+git clone git@github.com:bukanspot/virtualbox-rich-presence.git
 ```
 
 Then go to the [VirtualBox downloads page](https://www.virtualbox.org/wiki/Downloads) and download the VirtualBox SDK.
@@ -55,3 +58,13 @@ The [config](config.example.ini) allows you to change what is displayed on your 
 Make a copy of [`config.example.ini`](config.example.ini) and remove the `.example`, then [edit it](#config) if you want.
 
 Run `main.py`.
+
+## Compile
+For compile to `.exe` use this code
+```cmd
+pyinstaller.exe --onefile .\main.pyw
+```
+The `.exe` file found in `dist` directory.
+
+## Note
+The original source is available at [vidhanio/virtualbox-rich-presence](https://github.com/vidhanio/virtualbox-rich-presence)
