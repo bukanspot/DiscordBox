@@ -2,12 +2,13 @@
 
 [![pypresence](https://img.shields.io/badge/using-pypresence-00bb88.svg?style=for-the-badge&logo=discord&logoWidth=20)](https://github.com/qwertyquerty/pypresence)
 
-## Notice
+## Screenshot
+![discord ststus](https://raw.githubusercontent.com/bukanspot/DiscordBox/master/.github/archived/images/v2023.05.22/discord-status.png?token=GHSAT0AAAAAACA4XFCG7FS7Q32IQD3HAXNIZDKYUHA)
 
-This project is effectively unmaintanable for me as my new computer has no support for the API used in this project. I may still be able to help with simple issues such as config problems, but any technical reasons it may not be working are hard for me to debug.
+## Installation 
+*(for now only available on windows only)*
 
-## Installation
-Download [last release](https://github.com/bukanspot/virtualbox-rich-presence/releases/), instruction for installation include in zip file.
+Download [last release](https://github.com/bukanspot/DiscordBox/releases), instruction for installation include in zip file.
 
 
 ## Develovment
@@ -67,4 +68,5 @@ pyinstaller.exe --onefile .\main.pyw
 The `.exe` file found in `dist` directory.
 
 ## Note
-The original source is available at [vidhanio/virtualbox-rich-presence](https://github.com/vidhanio/virtualbox-rich-presence)
+- The original source has been archived, it's available at [vidhanio/virtualbox-rich-presence](https://github.com/vidhanio/virtualbox-rich-presence)
+- File `main.py` is same as `main.pyw`, file `.pyw` just run terminal or cmd in background.
