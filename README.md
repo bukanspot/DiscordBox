@@ -12,6 +12,13 @@ Download [last release](https://github.com/bukanspot/DiscordBox/releases), instr
 
 
 ## Develovment
+- [Setup](#setup)
+- [Config](#config)
+- [Available Values](#available-values)
+- [Usage](#usage)
+- [Compile](#compile)
+
+### Setup
 First, clone the repository.
 
 ```cmd
@@ -40,7 +47,7 @@ cd virtualbox-rich-presence
 pip install -r requirements.txt
 ```
 
-## Config
+### Config
 
 The [config](config.example.ini) allows you to change what is displayed on your rich presence.
 
@@ -54,13 +61,13 @@ The [config](config.example.ini) allows you to change what is displayed on your 
 - `{architecture image}`: Image key of OS architecture (e.g. "64")
 - `{icon}`: Image key of VirtualBox Icon.
 
-## Usage
+### Usage
 
 Make a copy of [`config.example.ini`](config.example.ini) and remove the `.example`, then [edit it](#config) if you want.
 
 Run `main.py`.
 
-## Compile
+### Compile
 For compile to `.exe` use this code
 ```cmd
 pyinstaller.exe --onefile .\main.pyw
