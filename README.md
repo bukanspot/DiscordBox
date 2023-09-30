@@ -3,10 +3,10 @@
 [![pypresence](https://img.shields.io/badge/using-pypresence-00bb88.svg?style=for-the-badge&logo=discord&logoWidth=20)](https://github.com/qwertyquerty/pypresence)
 
 ## Screenshot
-![discord ststus](https://raw.githubusercontent.com/bukanspot/DiscordBox/master/.github/archived/images/v2023.05.22/discord-status.png?token=GHSAT0AAAAAACA4XFCG7FS7Q32IQD3HAXNIZDKYUHA)
+![discord ststus](.github/archived/images/v2023.10.01/discord-status.png)
 
 ## Installation 
-*(for now only available on windows only)*
+*(for now only available on windows)*
 
 Download [last release](https://github.com/bukanspot/DiscordBox/releases), instruction for installation include in zip file.
 
@@ -19,10 +19,10 @@ Download [last release](https://github.com/bukanspot/DiscordBox/releases), instr
 - [Compile](#compile)
 
 ### Setup
-First, clone the repository.
+First, clone or download the repository.
 
 ```cmd
-git clone git@github.com:bukanspot/virtualbox-rich-presence.git
+git clone git@github.com:bukanspot/DiscordBox.git
 ```
 
 Then go to the [VirtualBox downloads page](https://www.virtualbox.org/wiki/Downloads) and download the VirtualBox SDK.
@@ -40,7 +40,7 @@ python vboxapisetup.py install
 Then, install the required modules.
 
 ```cmd
-cd virtualbox-rich-presence
+cd DiscordBox
 ```
 
 ```cmd
