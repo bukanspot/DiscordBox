@@ -88,13 +88,13 @@ class RichPresence:
 
             # Obtain OS and architecture information.
             os_version, architecture = self.generate_os_and_architecture(
-                machine_operating_systems[-1]
+                machine_operating_systems[machine_index]
             )
 
             # Assign the corresponding information to the keys in the dictionary
-            machine_list[-1]["name"] = machine_names[-1]
-            machine_list[-1]["architecture"] = architecture
-            machine_list[-1]["state"] = str(machine_states[-1])
+            machine_list[machine_index]["name"] = machine_names[machine_index]
+            machine_list[machine_index]["architecture"] = architecture
+            machine_list[machine_index]["state"] = str(machine_states[machine_index])
 
             # Iterate through assets and find the correct OS.
             for os in self.assets["operating systems"]:
@@ -102,8 +102,8 @@ class RichPresence:
                 # If the OS version is found in any of the OS dictionaries, set the version to that key.
                 if os_version in self.assets["operating systems"][os]["versions"]:
 
-                    machine_list[-1]["os"] = os
-                    machine_list[-1]["os version"] = os_version
+                    machine_list[machine_index]["os"] = os
+                    machine_list[machine_index]["os version"] = os_version
 
         return machine_list
 
@@ -138,7 +138,7 @@ class RichPresence:
         # Iterate through machine dictionary and find a machine that is online.
         for machine in machine_list:
 
-            if machine["state"] == "FirstOnline":
+            if machine["state"] == "FirstOnline" or machine["state"] == "Paused":
 
                 # Recognize that the user is in a machine.
                 format_dict["machine active"] = True

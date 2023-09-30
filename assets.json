@@ -66,6 +66,10 @@
                     "image": "windows_10",
                     "name": "Windows 10"
                 },
+		"Windows11": {
+                    "image": "windows_10",
+                    "name": "Windows 11"
+                },
                 "Windows2016": {
                     "image": "windows_2016",
                     "name": "Windows 2016"
