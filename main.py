@@ -1,15 +1,7 @@
 from __future__ import annotations
-import virtualbox, json, pprint, configparser, time, psutil, sys, subprocess, os
+import virtualbox, json, pprint, configparser, time, psutil, sys
 from pypresence import Presence
 
-# Initialize the config parser.
-config = configparser.ConfigParser()
-config.read("config.ini")
-
-# Initialize virtualbox dictionary.
-directory = config["Rich Presence"]["virtualbox_directory"]
-p = subprocess.Popen(directory)
-pid = p.pid
 
 class RichPresence:
     def __init__(self):
@@ -53,7 +45,7 @@ class RichPresence:
                 self.presence_dict = self.generate_presence_dict(
                     format_dict=self.format_dict
                 )
-
+                
                 # Update the Rich Presence.
                 self.RPC.update(**self.presence_dict)
 
@@ -64,8 +56,8 @@ class RichPresence:
 
             # Stop updating the Rich Presence if VirtualBox is not running.
             else:
-                p.wait()
-                os.kill(os.getpid(), 0)
+                print("VirtualBox is not running")
+                self.RPC.clear()
 
             time.sleep(15)
 
@@ -79,6 +71,8 @@ class RichPresence:
         machine_names = [machine.name for machine in machines]
         machine_states = [machine.state for machine in machines]
         machine_operating_systems = [machine.os_type_id for machine in machines]
+        
+        #print("list all: ",machine_operating_systems)
 
         # Iterate through the machines and store information about them in the machine list.
         for machine_index in range(len(machines)):
@@ -88,13 +82,13 @@ class RichPresence:
 
             # Obtain OS and architecture information.
             os_version, architecture = self.generate_os_and_architecture(
-                machine_operating_systems[-1]
+                machine_operating_systems[machine_index]
             )
-
+            #print(os_version)
             # Assign the corresponding information to the keys in the dictionary
-            machine_list[-1]["name"] = machine_names[-1]
-            machine_list[-1]["architecture"] = architecture
-            machine_list[-1]["state"] = str(machine_states[-1])
+            machine_list[machine_index]["name"] = machine_names[machine_index]
+            machine_list[machine_index]["architecture"] = architecture
+            machine_list[machine_index]["state"] = str(machine_states[machine_index])
 
             # Iterate through assets and find the correct OS.
             for os in self.assets["operating systems"]:
@@ -102,9 +96,9 @@ class RichPresence:
                 # If the OS version is found in any of the OS dictionaries, set the version to that key.
                 if os_version in self.assets["operating systems"][os]["versions"]:
 
-                    machine_list[-1]["os"] = os
-                    machine_list[-1]["os version"] = os_version
-
+                    machine_list[machine_index]["os"] = os
+                    machine_list[machine_index]["os version"] = os_version
+        #print(machine_list)
         return machine_list
 
     def generate_os_and_architecture(self, os_type_id: str):
@@ -137,9 +131,8 @@ class RichPresence:
 
         # Iterate through machine dictionary and find a machine that is online.
         for machine in machine_list:
-
-            if machine["state"] == "FirstOnline":
-
+            print(machine)
+            if machine["state"] == "FirstOnline" or machine["state"] == "Paused":
                 # Recognize that the user is in a machine.
                 format_dict["machine active"] = True
 
@@ -204,7 +197,7 @@ class RichPresence:
 
             # If the user is in the menu, there is no need to show the time elapsed.
             presence_dict["start"] = None
-
+        
         # Set all empty strings or empty lists to None.
         for field in presence_dict:
 
